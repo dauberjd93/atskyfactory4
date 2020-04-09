@@ -8,7 +8,7 @@ ENV SERVER_OPTS nogui
 
 VOLUME ["/opt/minecraft/server"]
 
-ADD SkyFactory4 /tmp/
+ADD SkyFactory4 /tmp/SkyFactory4
 ADD init.sh /root/
 
 RUN apt-get update && apt-get install unzip

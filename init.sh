@@ -9,15 +9,16 @@ else
 	rsync -rltp --exclude 'world' --exclude '/server.properties' --exclude '/*.json' /tmp/SkyFactory4 /opt/minecraft/server/SkyFactory4
 fi
 
-if [ -f /opt/minecraft/server/forge-1.12.2-14.23.5.2838-installer.jar ] ; then 
+if [ -f /opt/minecraft/server/forge-*-installer.jar ] ; then 
     echo "Installing needed Lib files"
     cd /opt/minecraft/server/SkyFactory4
-    java -server -Xmx${SERVER_MAXHEAP} -Xms${SERVER_MINHEAP} -XX:+UseG1GC -jar /opt/minecraft/server/forge-1.12.2-14.23.5.2838-installer.jar ${SERVER_OPTS}  --installServer
+    java -server -Xmx${SERVER_MAXHEAP} -Xms${SERVER_MINHEAP} -XX:+UseG1GC -jar /opt/minecraft/server/SkyFactory4/forge-*-installer.jar ${SERVER_OPTS}  --installServer
     echo "Removing Installer"
-    rm  /opt/minecraft/server/forge-1.12.2-14.23.5.2838-installer.jar
+    rm  /opt/minecraft/server/SkyFactory4forge-*-installer.jar
 fi
 
 
 #Start Server
 echo "Starting Skyfactory4"
-java -server -Xmx${SERVER_MAXHEAP} -Xms${SERVER_MINHEAP} -XX:+UseG1GC -jar /opt/minecraft/server/forge-1.12.2-14.23.5.2838-universal.jar ${SERVER_OPT}
+cd /opt/minecraft/server/SkyFactory4
+java -server -Xmx${SERVER_MAXHEAP} -Xms${SERVER_MINHEAP} -XX:+UseG1GC -jar /opt/minecraft/server/SkyFactory4/forge-*-universal.jar ${SERVER_OPT}
